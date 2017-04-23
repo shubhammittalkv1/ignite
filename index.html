@@ -1,0 +1,109 @@
+<!-- autor: Shubham Mittal
+Task for Ignite Solutions -->
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Ignite Task</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="css/production.css" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <!-- <link href="css/plugins/morris.css" rel="stylesheet"> -->
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- for datepicker -->
+    <link rel="stylesheet" href="date/datepicker3.css">
+    <!-- adding angular to the html page -->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.js"></script>
+    <script src="app.js"></script>
+    <script src="controller.js"></script>
+</head>
+<body ng-app="taskApp"> <!-- for initializing the application as taskApp -->
+  <div  ng-controller="indexPageController"> <!-- for initializing the controller as indexPageController -->
+    <div id="container">
+      <div class="row padding-20-y">
+        <div class="col-lg-3 col-md-3 col-xs-0 col-sm-0"></div>
+        <div class="col-lg-6 col-md-8 col-xs-12 col-sm-12">
+          <span class="headline"> Movie Search Application Developed by Shubham Mittal</span>
+          <div class="input-group margin-10-y">
+            <input type="text" class="form-control" placeholder="Search the Movie" data-ng-model="movieName"> 
+            <!-- input text field for fetching the input from the user -->
+            <span class="input-group-btn">
+              <button class="btn btn-primary" type="button" data-ng-click="movieSearch()">  <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
+              <!--  this button is to search a movie -->
+            </span>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-xs-0 col-sm-0"></div>
+      </div>
+      <div data-ng-if="isdescription == false">
+        <div class="row margin-20-x padding-20-y">
+          <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 " data-ng-if ="movieData.Response !='False'"><span class="headline">MOVIES</span></div>
+            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 " data-ng-if ="movieData.Response =='False'"><span class="headline">Movie not found. Please search again.</span></div>
+            <!-- for iterating the search results data -->
+            <div data-ng-repeat="item in movieData.Search"> 
+              <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12"><hr class="margin-10-y"></div> 
+              <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                <div class="media">
+                  <div class="media-left">
+                    <img class="media-object movie-poster-size" src="{{item.Poster}}" data-ng-if="item.Poster != 'N/A'" data-ng-click="movieDetails(item.imdbID)">
+                    <img src="http://placehold.it/96x100" data-ng-if="item.Poster == 'N/A'" >
+                  </div>
+                  <div class="media-body" data-ng-click="movieDetails(item.imdbID)">
+                    <h4 class="media-heading" >{{item.Title}}</h4>
+                    {{item.Year}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-ng-if="isdescription ==true">
+        <div class="row">
+          <div class="col-lg-1 col-md-1 col-xs-0 col-sm-0"></div>
+          <div class="col-lg-10 col-md-10 col-xs-12 col-sm-12">
+            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 margin-10-y">
+              <span class="movie-heading">{{movieDetailsData.Title}}</span><span class="movie-year"> ({{movieDetailsData.Year}})</span>
+            </div>
+            <div class="">
+              <div class="col-lg-4 col-md-4 col-xs-12 col-sm-12 padding-20-x">
+                <img class="media-object" src="{{movieDetailsData.Poster}}" data-ng-if="movieDetailsData.Poster != 'N/A'">
+                <img src="http://placehold.it/96x100" data-ng-if="movieDetailsData.Poster == 'N/A'" >
+              </div>
+              <div class="col-lg-7 col-md-7 col-xs-12 col-sm-12 no-padding">
+                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
+                  <strong>Cast : </strong><span class="movie-cast">{{movieDetailsData.Actors}}</span>
+                </div>
+                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding margin-10-y">
+                  <strong>Plot : </strong><span class="movie-Plot">{{movieDetailsData.Plot}}</span>
+                </div>
+              </div>
+              <div class="col-lg-2 col-md-2 col-xs-0 col-sm-0"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <script src="js/jquery.js"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <script src="js/bootstrap.min.js"></script>
+  <!-- Page script -->
+  <script>
+  </script>
+</body>
+
+</html>

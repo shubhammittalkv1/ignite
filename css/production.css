@@ -1,0 +1,50 @@
+.padding-10-x {
+	padding-left:10px !important;
+	padding-right:10px !important;
+}
+.padding-20-x {
+	padding-left:20px !important;
+	padding-right:20px !important;
+}
+.margin-20-x {
+	margin-left:20px !important;
+	margin-right:20px !important;
+}
+.padding-20-y {
+	padding-top:20px !important;
+	padding-bottom:20px !important;
+}
+.headline {
+	font-size: 22px !important;
+}
+.margin-10-y {
+	margin-top:10px !important;
+	margin-bottom:10px !important;
+}
+.movie-poster-size {
+	width:96px !important;
+	position: relative;
+}
+.hidden-overflow {
+	overflow:hidden;
+}
+.center-aligned {
+	text-align: center !important;
+}
+.movie-heading {
+	font-size: 32px;	
+}
+.movie-year {
+	font-size: 20px;
+    color: #77797c;	
+}
+.no-padding {
+	padding:0px !important;
+}
+.no-margin {
+	margin:0px !important;
+}
+
+
+    
+
